@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.ithe.domain.Order" table="order_detail">
+		<id name="order_id" column="order_id" type="java.lang.Integer">
+			<generator class="native"/>
+		</id>
+		<property name="order_modified_time" column="order_modified_time"/>
+		
+		<!-- 关联User表 -->
+		<many-to-one name="user" class="com.ithe.domain.User" column="order_user_id"/>
+		
+		<!-- 关联商品表 -->
+		<one-to-one name="orderGoods" class="com.ithe.domain.Goods" cascade="all" property-ref="orders"></one-to-one>
+		
+	</class>
+
+</hibernate-mapping>

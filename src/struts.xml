@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+    <constant name="struts.multipart.maxSize" value="10485760"/>
+
+	<!-- 先配置包结构 -->
+	<package name="network" extends="struts-default" namespace="/">
+	
+		<default-action-ref name="defaultAction" />
+		<!-- 配置全局的结果页面 -->
+		 <global-results>
+			<result name="index" type="redirect">/index.jsp</result>
+			<result name="success" type="redirect">/jsp/success.jsp</result>
+		</global-results> 
+		
+		<action name="showGoods_*" class="showGoodsAction" method="{1}">
+	        <result name="findByPageOk">/main.jsp</result>
+	    </action>
+	    
+		<!-- 配置用户的模块 -->
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="success" type="redirect">/jsp/success.jsp</result>
+		    <result name="login">/login.jsp</result>
+	        <result name="loginOK">/index.jsp</result>
+	        <result name="exit">/index.jsp</result>
+	        <result name="info">/jsp/info-main.jsp</result>
+	        <result name="edit">/jsp/user/edit.jsp</result>
+	        <result name="up">/jsp/user/up.jsp</result>
+	        <result name="findByPageOk">/jsp/admin.jsp</result>
+	    </action>
+	    
+	    <!-- 管理员模块 -->
+	    <action name="admin_*" class="adminAction" method="{1}">
+	        <result name="information">jsp/admin.jsp</result>
+	        <result name="admLogin">adminLogin.jsp</result>
+	        <result name="admLoginOk">/jsp/admin.jsp</result>
+	    </action>
+	    
+	    <!-- 商品模块 -->
+	    <action name="goods_*" class="goodsAction" method="{1}">
+	        <result name="findByPageOk">/jsp/admin.jsp</result>
+	        <result name="goodsDetails">/jsp/goods.jsp</result>
+	        <result name="edit">/jsp/goods/edit.jsp</result>
+	        <result name="userAddOk">/jsp/info-main.jsp</result>
+	        <result name="admAddOk">/jsp/admin.jsp</result>
+	    </action>
+	    
+	    <!-- 支付模块 -->
+	    <action name="payment_*" class="paymentAction" method="{1}">
+	        <result name="findByPageOk">/jsp/admin.jsp</result>
+	        <result name="Test">/index.jsp</result>
+	    </action>
+	    
+	    <action name="order_*" class="orderAction" method="{1}">
+	    
+	    </action>
+	    
+	    <action name="comment_*" class="commentAction" method="{1}">
+	    </action>
+	    
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+

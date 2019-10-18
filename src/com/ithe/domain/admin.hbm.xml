@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.ithe.domain.Admin" table="admin">
+		<id name="adm_id" column="adm_id" type="java.lang.Integer">
+			<generator class="native"/>
+		</id>
+		<property name="adm_name" column="adm_name" type="java.lang.String" />
+		<property name="adm_password" column="adm_password" type="java.lang.String" />
+		
+		<set name="adm_goodsSet" inverse="true" cascade="delete-orphan">
+			<key column="adm_goods_id"/>
+			<one-to-many class="com.ithe.domain.Goods"/>
+		</set>
+	</class>
+</hibernate-mapping>
