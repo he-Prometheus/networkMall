@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.ithe.domain.Comment" table="product_comment">
+		<id name="com_id" column="com_id" type="java.lang.Integer">
+			<generator class="native"/>
+		</id>
+		
+		<property name="com_content" column="com_content"/>
+		<property name="com_audit_time" column="com_audit_time"/>
+		
+		<!-- 关联User表 -->
+		<many-to-one name="user" class="com.ithe.domain.User" column="com_user_id"  cascade="save-update"/>
+		
+		<!-- 关联商品表 -->
+		<many-to-one name="goodsCom" class="com.ithe.domain.Goods" column="com_goods_id" cascade="save-update"/>
+		
+	</class>
+
+</hibernate-mapping>

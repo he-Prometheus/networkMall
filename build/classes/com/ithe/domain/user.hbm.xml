@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.ithe.domain.User" table="user">
+		<id name="user_id" column="user_id" type="java.lang.Integer">
+			<generator class="native"/>
+		</id>
+		<property name="user_name" column="user_name"/>
+		<property name="user_password" column="user_password"/>
+		<property name="user_email" column="user_email"/>
+		<property name="user_money" column="user_money"/>
+		
+		
+		<!-- 这里pojo类的属性和数据库中的属性不一致 -->
+		<property name="registerTime" column="user_register_time"/>
+		
+		<!-- 商品外键 -->
+		<set name="goodsSet" inverse="true" cascade="save-update,delete-orphan">
+			<key column="user_goods_id"/>
+			<one-to-many class="com.ithe.domain.Goods"/>
+		</set>
+		
+		<!-- 订单外键 -->
+		<set name="orders" inverse="true" cascade="save-update,delete-orphan">
+			<key column="order_user_id"/>
+			<one-to-many class="com.ithe.domain.Order"/>
+		</set>
+		
+		<!-- 用户评论外键 -->
+		<set name="userComments" inverse="true" cascade="save-update,delete-orphan">
+			<key column="com_user_id"/>
+			<one-to-many class="com.ithe.domain.Comment"/>
+		</set>
+		
+	</class>
+
+</hibernate-mapping>

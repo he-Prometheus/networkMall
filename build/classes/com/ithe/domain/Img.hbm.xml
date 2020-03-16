@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.ithe.domain.Img" table="img">
+		<id name="img_id" column="img_id" type="java.lang.Integer">
+			<generator class="native"/>
+		</id>
+		<property name="img_url" column="img_url"/>
+		
+		<many-to-one name="goods" class="com.ithe.domain.Goods" column="goods_img_id" cascade="save-update"/>
+		
+	</class>
+
+</hibernate-mapping>

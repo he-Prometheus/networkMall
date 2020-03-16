@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.ithe.domain.Payment" table="payment_records">
+		<id name="pay_id" column="pay_id" type="java.lang.Integer">
+			<generator class="native"/>
+		</id>
+		<property name="pay_sell_id" column="pay_sell_id" type="java.lang.Integer"/>
+		<property name="pay_sell_name" column="pay_sell_name"/>
+		<property name="pay_buy_id" column="pay_buy_id"/>
+		<property name="pay_buy_name" column="pay_buy_name"/>
+		<property name="pay_goods_id" column="pay_goods_id"/>
+		<property name="pay_goods_name" column="pay_goods_name"/>
+		<property name="pay_price" column="pay_price"/>
+		<property name="pay_records_time" column="pay_records_time"/>
+	</class>
+	
+</hibernate-mapping>

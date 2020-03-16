@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	
+	<class name="com.ithe.domain.Goods" table="goods">
+		<id name="goods_id" column="goods_id" type="java.lang.Integer">
+			<generator class="native"/>
+		</id>
+		<property name="goods_name" column="goods_name" type="java.lang.String"/>
+		<property name="goods_price" column="goods_price"/>
+		<property name="goods_desc" column="goods_desc"/>
+		<property name="category" column="goods_category_id"/>
+		<property name="goods_modified_time" column="goods_modified_time"/>
+		<property name="belong" column="belong"/>
+		
+		<!-- 关联User表 -->
+		<many-to-one name="user" class="com.ithe.domain.User" column="user_goods_id"/>
+		
+		<!-- 关联adm表 -->
+		<many-to-one name="adm" class="com.ithe.domain.Admin" column="adm_goods_id"/>
+		
+        <!-- 关联订单表 -->
+        <many-to-one name="orders" class="com.ithe.domain.Order" column="order_goods_id" unique="true"></many-to-one>
+		
+        <!-- 关联img表 -->
+		<set name="imgs" inverse="true" cascade="save-update,delete-orphan" >
+			<key column="goods_img_id"/>
+			<one-to-many class="com.ithe.domain.Img"/>
+		</set>
+		
+		<!-- 商品评论外键 -->
+		<set name="goodsComments" inverse="true" cascade="save-update,delete" >
+			<key column="com_goods_id"/>
+			<one-to-many class="com.ithe.domain.Comment"/>
+		</set>
+	</class>
+	
+</hibernate-mapping>   
