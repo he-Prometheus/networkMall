@@ -44,7 +44,6 @@ public class AdminAction extends ActionSupport implements ModelDriven<Admin>{
 	public String login(){
 		//从session中判断管理员有没有登录
 		Admin existAdmin=adminService.login(admin);
-		
 		if(existAdmin == null){
 			return "admLogin";
 		}else{
@@ -53,7 +52,5 @@ public class AdminAction extends ActionSupport implements ModelDriven<Admin>{
 			// 登录成功
 			return "admLoginOk";
 		}
-		
 	}
-
 }
